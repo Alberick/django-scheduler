@@ -82,7 +82,7 @@ class Event(with_metaclass(ModelBase, *get_model_bases('Event'))):
         null=True,
         blank=True,
         verbose_name=_("calendar"))
-    color_event = models.CharField(_("Color event"), blank=True, max_length=10)
+    color_event = models.CharField(_("Color event"), max_length=10)
     objects = EventManager()
 
     class Meta(object):
