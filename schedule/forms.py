@@ -36,6 +36,13 @@ class OccurrenceForm(SpanForm):
     class Meta(object):
         model = Occurrence
         exclude = ('original_start', 'original_end', 'event', 'cancelled')
+        
+        
+class AdminOccurrenceForm(forms.ModelForm):
+    class Meta:
+        widgets = {
+            'occurrence_color': SpectrumColorPicker,
+        }
 
 
 class EventAdminForm(forms.ModelForm):
