@@ -149,6 +149,9 @@ class Calendar(with_metaclass(ModelBase, *get_model_bases('Calendar'))):
         verbose_name = _('calendar')
         verbose_name_plural = _('calendars')
         app_label = 'schedule'
+        permissions = (
+            ('view_calendar', 'Can view calendars'),
+        )
 
     def __str__(self):
         return self.name

@@ -82,7 +82,7 @@ class Event(with_metaclass(ModelBase, *get_model_bases('Event'))):
         null=True,
         blank=True,
         verbose_name=_("calendar"))
-    color_event = models.CharField(_("Color event"), blank=True, max_length=10)
+    color_event = models.CharField(_("Color event"), max_length=10)
     objects = EventManager()
 
     class Meta(object):
@@ -91,6 +91,9 @@ class Event(with_metaclass(ModelBase, *get_model_bases('Event'))):
         app_label = 'schedule'
         index_together = (
             ('start', 'end'),
+        )
+        permissions = (
+            ('view_event', 'Can view events'),
         )
 
     def __str__(self):
@@ -580,6 +583,9 @@ class Occurrence(with_metaclass(ModelBase, *get_model_bases('Occurrence'))):
         app_label = 'schedule'
         index_together = (
             ('start', 'end'),
+        )
+        permissions = (
+            ('view_occurrence', 'Can view occurrences'),
         )
 
     def __init__(self, *args, **kwargs):
